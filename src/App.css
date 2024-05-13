@@ -6,7 +6,7 @@
 .card1{
   background: white !important;
   padding: 50px 50px !important;
- 
+ margin: 10px;
   box-shadow: 0 0 10px #ddd !important;
  
   align-items: center;
