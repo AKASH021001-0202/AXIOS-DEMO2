@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+.col-lg-6.form-group {
+  padding: 10px;
+}
 .card1{
   background: white !important;
   padding: 50px 50px !important;
@@ -12,6 +15,8 @@
   align-items: center;
   justify-content: space-between;
 }
+.bg-sec{
+  background: #f0f8ff;}
 .header-content{
   display: flex;
   justify-content: space-between;

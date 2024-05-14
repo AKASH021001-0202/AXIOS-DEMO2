@@ -156,164 +156,226 @@ const Home = () => {
     setFormData(user);
     setEditMode(true);
     setEditingUserId(user.id);
+    handleShowModal();
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    // Set showModal to false when closing the modal
+    setShowModal(false);
+  };
+  const handleShowModal = () => {
+    setShowModal(true);
   };
 
   return (
-    <div className="container p-5">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Username:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Street:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.street"
-            value={formData.address.street}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Suite:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.suite"
-            value={formData.address.suite}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>City:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.city"
-            value={formData.address.city}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Zipcode:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.zipcode"
-            value={formData.address.zipcode}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Latitude:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.geo.lat"
-            value={formData.address.geo.lat}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Longitude:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="address.geo.lng"
-            value={formData.address.geo.lng}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Phone:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Website:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="website"
-            value={formData.website}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Company Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="company.name"
-            value={formData.company.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Catch Phrase:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="company.catchPhrase"
-            value={formData.company.catchPhrase}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>BS:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="company.bs"
-            value={formData.company.bs}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className={`btn ${editMode ? "btn-primary" : "btn-success"}`}
-        >
-          {editMode ? "Update" : "Submit"}
-        </button>
-      </form>
+    <section className="bg-sec">
 
+    <div className="container p-5">
+      <div className="num d-flex justify-content-between align-content-lg-center">
+        <h3>Data</h3>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleShowModal}
+        >
+          <i class="bi bi-plus"></i>ADD DATA
+        </button>
+
+        {showModal && (
+          <div
+            className="modal fade show"
+            tabIndex="-1"
+            role="dialog"
+            style={{ display: "block" }}
+            onClick={handleCloseModal}
+          >
+            <div
+              className="modal-dialog modal-lg"
+              role="document"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-content">
+                {/* Modal Header */}
+                <div className="modal-header d-flex justify-content-between">
+                  <h5 className="modal-title" id="exampleModalLabel">
+                  Add New User
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={handleCloseModal}
+                  >
+                   
+                  </button>
+                </div>
+                <div className="p-5">
+                  <form onSubmit={handleSubmit}>
+                    <div className="row">
+                      <div className="col-lg-6 form-group">
+                        <label>Name:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Username:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="username"
+                          value={formData.username}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className=" col-lg-6 form-group">
+                        <label>Email:</label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Street:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.street"
+                          value={formData.address.street}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className=" col-lg-6 form-group">
+                        <label>Suite:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.suite"
+                          value={formData.address.suite}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>City:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.city"
+                          value={formData.address.city}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Zipcode:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.zipcode"
+                          value={formData.address.zipcode}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Latitude:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.geo.lat"
+                          value={formData.address.geo.lat}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Longitude:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="address.geo.lng"
+                          value={formData.address.geo.lng}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Phone:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Website:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="website"
+                          value={formData.website}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Company Name:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="company.name"
+                          value={formData.company.name}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>Catch Phrase:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="company.catchPhrase"
+                          value={formData.company.catchPhrase}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col-lg-6 form-group">
+                        <label>BS:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="company.bs"
+                          value={formData.company.bs}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className={`mt-3 btn ${
+                          editMode ? "btn-primary" : "btn-success"
+                        }`}
+                      >
+                        {editMode ? "Update" : "Submit"}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      
+      </div>
+      <hr />
       {/* User data display */}
-      <h3>Data</h3>
+
       <div className="row">
         {users.map((user) => (
-          <div className="  col-md-12" key={user.id}>
+          <div className="col-md-6" key={user.id}>
             <div className="card1">
               <table className="table">
                 <tbody>
@@ -380,25 +442,25 @@ const Home = () => {
                 </tbody>
               </table>
               <div className="update-card">
-              <button
-                className="btn btn-danger"
-                onClick={() => deleteUser(user.id)}
-              >
-                Delete
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => handleEdit(user)}
-              >
-                Edit
-              </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteUser(user.id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleEdit(user)}
+                >
+                  Edit
+                </button>
               </div>
-              
             </div>
           </div>
         ))}
       </div>
     </div>
+    </section>
   );
 };
 
